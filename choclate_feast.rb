@@ -2,7 +2,7 @@ def total_chocolates(money, cost, discount)
   chocolate = 0
   wrappers = 0
 
-  until money == 0
+  until money < cost
     money -= cost
     chocolate, wrappers = unwrap_choclate(chocolate, wrappers)
     chocolate, wrappers = check_wrappers(chocolate, wrappers, discount)
