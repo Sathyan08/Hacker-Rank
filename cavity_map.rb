@@ -47,3 +47,11 @@ class Map
   end
 
 end
+
+dimensions = get.strip.to_i
+
+cav_map = Map.new(dimensions)
+
+dimensions.times { cav_map.add_spaces(get.strip) }
+
+cav_map.display_cavities
