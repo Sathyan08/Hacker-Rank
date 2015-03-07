@@ -1,5 +1,5 @@
 class Map
-  attr_reader :spaces
+  attr_reader :spaces, :dimensions
 
   def initialize(n)
     @spaces = []
@@ -23,6 +23,7 @@ class Map
   end
 
   def cavity?(row, col)
+    return false if edge?(row, col)
     cav = space(row, col)
     adjacents(row, col).all? { |depth| depth < cav }
   end
@@ -36,8 +37,13 @@ class Map
   def find_cavities
     @spaces.each_with_index do |space, index|
       row, col = to_row_and_column(index)
-      space
+      @spaces[index] = "X" if cavity?(row, col)
     end
+  end
+
+  def display_cavities
+    find_cavities
+    @dimensions.times { puts @spaces.slice!(@dimensions) }
   end
 
 end
