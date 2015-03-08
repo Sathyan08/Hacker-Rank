@@ -31,7 +31,7 @@ class Map
   def to_row_and_column(index)
     col = index % @dimensions
     row = index - col
-    row, col
+    return row, col
   end
 
   def find_cavities
@@ -48,10 +48,10 @@ class Map
 
 end
 
-dimensions = get.strip.to_i
+dimensions = gets.strip.to_i
 
 cav_map = Map.new(dimensions)
 
-dimensions.times { cav_map.add_spaces(get.strip) }
+dimensions.times { cav_map.add_spaces(gets.strip) }
 
 cav_map.display_cavities
