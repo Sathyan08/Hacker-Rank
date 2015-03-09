@@ -1,3 +1,5 @@
+require 'pry'
+
 class Map
   attr_reader :spaces, :dimensions
 
@@ -25,20 +27,25 @@ class Map
   def cavity?(row, col)
     return false if edge?(row, col)
     cav = space(row, col)
-    adjacents(row, col).all? { |depth| depth < cav }
+    neighbors = adjacents(row, col)
+    adjacents(row, col).all? { |depth|  depth < cav }
   end
 
   def to_row_and_column(index)
     col = index % @dimensions
-    row = index - col
+    row = (index - col) / @dimensions
     return row, col
   end
 
   def find_cavities
-    @spaces.each_with_index do |space, index|
+    cavities = []
+
+    @spaces.each_with_index do |spot, index|
       row, col = to_row_and_column(index)
-      @spaces[index] = "X" if cavity?(row, col)
+      cavities << index if cavity?(row, col)
     end
+
+    cavities.each { |index| @spaces[index] = "X"  }
   end
 
   def display_cavities
