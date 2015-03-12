@@ -7,7 +7,7 @@ class AnagramFinder
   end
 
   def number_of_deletions
-    @possible_values.keys.inject(0) { |sum, char| find_difference(char) }
+    @possible_values.keys.inject(0) { |sum, char| sum + find_difference(char) }
   end
 
   private
