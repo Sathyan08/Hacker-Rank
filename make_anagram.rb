@@ -1,9 +1,9 @@
 class AnagramFinder
 
   def initialize(s1, s2)
+    @possible_values = { }
     @counts_1 = add_counts(s1)
     @counts_2 = add_counts(s2)
-    @possible_values = { }
   end
 
   def number_of_deletions
