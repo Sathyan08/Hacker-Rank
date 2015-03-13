@@ -38,7 +38,16 @@ class PalindromeFinder
   end
 
   def palindrome?(string)
-    string.reverse == string
+    i = 0
+    length = string.length
+    mid = length / 2
+
+    while i <= mid
+      return false if string[i] != string[-i - 1]
+      i += 1
+    end
+
+    true
   end
 
   def look_for_palindrome
