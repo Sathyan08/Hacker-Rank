@@ -50,7 +50,7 @@ class Map
 
   def display_cavities
     find_cavities
-    @dimensions.times { puts make_lines }
+    @spaces.each_slice(@dimensions) { |row| puts row }
   end
 
   def make_lines
