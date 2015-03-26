@@ -55,7 +55,6 @@ class Map
 
   def make_lines
     @copy ||= @dimensions
-
   end
 
 end
